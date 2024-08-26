@@ -13,6 +13,8 @@ frontend/node_modules
 main-packr.go
 packrd/
 
+docker-compose.yaml
+
 # Editor directories and files
 .idea
 *.suo

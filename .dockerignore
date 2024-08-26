@@ -19,4 +19,5 @@ openvpn-admin
 ovpn-admin
 
 docker-compose.yaml
+docker-compose.yaml.example
 img
