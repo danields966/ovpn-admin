@@ -58,4 +58,4 @@ cp -f /etc/openvpn/setup/openvpn.conf /etc/openvpn/openvpn.conf
 
 mkdir -p /etc/openvpn/ccd
 
-openvpn --config /etc/openvpn/openvpn.conf --client-config-dir /etc/openvpn/ccd --port ${OVPN_SRV_PORT} --management 127.0.0.1 8989 --server ${OVPN_SRV_NET} ${OVPN_SRV_MASK}
+openvpn --config /etc/openvpn/openvpn.conf --client-config-dir /etc/openvpn/ccd --management 127.0.0.1 8989 --port ${OVPN_SRV_PORT} --server ${OVPN_SRV_NET} ${OVPN_SRV_MASK}
