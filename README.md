@@ -21,18 +21,22 @@ Originally created in [Flant](https://flant.com/) for internal needs & used for 
 ### Screenshots
 
 Managing users in ovpn-admin:
-![ovpn-admin UI](https://raw.githubusercontent.com/flant/ovpn-admin/master/img/ovpn-admin-users.png)
+![ovpn-admin UI](https://raw.githubusercontent.com/danields966/ovpn-admin/master/img/ovpn-admin-users.png)
 
 An example of dashboard made using ovpn-admin metrics:
-![ovpn-admin metrics](https://raw.githubusercontent.com/flant/ovpn-admin/master/img/ovpn-admin-metrics.png)
+![ovpn-admin metrics](https://raw.githubusercontent.com/danields966/ovpn-admin/master/img/ovpn-admin-metrics.png)
 
 ## Installation
 
 ### 1. Docker
 
-There is a ready-to-use [docker-compose.yaml](https://github.com/flant/ovpn-admin/blob/master/docker-compose.yaml), so you can just change/add values you need and start it with [start.sh](https://github.com/flant/ovpn-admin/blob/master/start.sh).
+There is a ready-to-use docker-compose config, so you can just change/add values you need and start it with [start.sh](https://github.com/danields966/ovpn-admin/blob/master/start.sh).
 
-Please find and replace all following variables in docker-compose.yaml:
+You can create it from copying example file:
+
+    cp docker-compose.yaml.example docker-compose.yaml
+
+Then find and replace all following variables in docker-compose.yaml:
 
 * `YOUR_OPENVPN_SERVER_IP`: Public IP address of your OpenVPN server
 * `YOUR_OPENVPN_SERVER_PORT`: Port of your OpenVPN server (you can set 1194 as default)
@@ -46,7 +50,7 @@ You need [Docker](https://docs.docker.com/get-docker/) and [docker-compose](http
 Commands to execute:
 
 ```bash
-git clone https://github.com/flant/ovpn-admin.git
+git clone https://github.com/danields966/ovpn-admin.git
 cd ovpn-admin
 ./start.sh
 ```
@@ -155,4 +159,4 @@ Flags:
 
 ## Further information
 
-Please feel free to use [issues](https://github.com/flant/ovpn-admin/issues) and [discussions](https://github.com/flant/ovpn-admin/discussions) to get help from maintainers & community.
+Please feel free to use [issues](https://github.com/danields966/ovpn-admin/issues) and [discussions](https://github.com/danields966/ovpn-admin/discussions) to get help from maintainers & community.
