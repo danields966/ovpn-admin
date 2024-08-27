@@ -32,11 +32,7 @@ You need [Docker](https://docs.docker.com/get-docker/) and [docker-compose](http
 
 Setup firewall to allow connections to selected port for OpenVPN:
 
-    sudo apt install ufw
-    ufw allow YOUR_OPENVPN_SERVER_PORT/tcp
-    ufw allow OpenSSH
-    ufw disable
-    ufw enable
+    OVPN_SERVER_PORT=YOUR_OPENVPN_SERVER_PORT ./setup.sh
 
 ## Installation
 

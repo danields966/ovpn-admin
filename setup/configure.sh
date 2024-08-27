@@ -30,14 +30,21 @@ else
 fi
 easyrsa gen-crl
 
-sed -i "/# Don't delete these required lines, otherwise there will be errors/i \
+BEFORE_RULES_FILE_PATH="/etc/ufw/before.rules"
+SEARCH_STRING="# START OPENVPN RULES"
+
+DEFAULT_INTERFACE=$(ip route list default | awk '{print $5}')
+
+if ! grep -q "$SEARCH_STRING" "$BEFORE_RULES_FILE_PATH"; then
+    sed -i "/# Don't delete these required lines, otherwise there will be errors/i \
 # START OPENVPN RULES\n\
 # NAT table rules\n\
 *nat\n\
 :POSTROUTING ACCEPT [0:0]\n\
--A POSTROUTING -s ${OVPN_SRV_NET}/${OVPN_SRV_MASK} -o eth0 -j MASQUERADE\n\
+-A POSTROUTING -s ${OVPN_SRV_NET}/${OVPN_SRV_MASK} -o ${DEFAULT_INTERFACE} -j MASQUERADE\n\
 COMMIT\n\
-# END OPENVPN RULES\n" /etc/ufw/before.rules
+# END OPENVPN RULES\n" ${BEFORE_RULES_FILE_PATH}
+fi
 
 sed -i 's/^DEFAULT_FORWARD_POLICY=.*/DEFAULT_FORWARD_POLICY="ACCEPT"/' /etc/default/ufw
 
