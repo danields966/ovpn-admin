@@ -30,15 +30,9 @@ An example of dashboard made using ovpn-admin metrics:
 
 You need [Docker](https://docs.docker.com/get-docker/) and [docker-compose](https://docs.docker.com/compose/install/) installed.
 
-Setup firewall to allow connections to selected port for OpenVPN:
-
-    OVPN_SERVER_PORT=YOUR_OPENVPN_SERVER_PORT ./setup.sh
-
 ## Installation
 
-### 1. Docker
-
-There is a ready-to-use docker-compose config, so you can just change/add values you need and start it with [start.sh](https://github.com/danields966/ovpn-admin/blob/master/start.sh).
+There is a ready-to-use docker-compose config, so you can just change/add values you need and start it with [start_openvpn.sh](https://github.com/danields966/ovpn-admin/blob/master/start_openvpn.sh).
 
 You can create it from copying example file:
 
@@ -62,10 +56,13 @@ Please double all `$` signs to avoid variable rendering in docker-compose file, 
 
 Commands to execute:
 
+Please note that you can skip running of setup_firewall.sh if you manually configure your network.
+
 ```bash
+OVPN_SERVER_PORT=YOUR_OPENVPN_SERVER_PORT ./setup_firewall.sh
 git clone https://github.com/danields966/ovpn-admin.git
 cd ovpn-admin
-./start.sh
+./start_openvpn.sh
 ```
 
 ## Notes
