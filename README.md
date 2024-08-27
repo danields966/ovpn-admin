@@ -26,6 +26,18 @@ Managing users in ovpn-admin:
 An example of dashboard made using ovpn-admin metrics:
 ![ovpn-admin metrics](https://raw.githubusercontent.com/danields966/ovpn-admin/master/img/ovpn-admin-metrics.png)
 
+## Prerequisites
+
+You need [Docker](https://docs.docker.com/get-docker/) and [docker-compose](https://docs.docker.com/compose/install/) installed.
+
+Setup firewall to allow connections to selected port for OpenVPN:
+
+    sudo apt install ufw
+    ufw allow YOUR_OPENVPN_SERVER_PORT/tcp
+    ufw allow OpenSSH
+    ufw disable
+    ufw enable
+
 ## Installation
 
 ### 1. Docker
@@ -42,10 +54,15 @@ Then find and replace all following variables in docker-compose.yaml:
 * `YOUR_OPENVPN_SERVER_PORT`: Port of your OpenVPN server (you can set 1194 as default)
 * `YOUR_OVPN_ADMIN_USER`: Login to access ovpn-admin via HTTP basic authentication
 * `YOUR_OVPN_ADMIN_PORT`: Port to access ovpn-admin (you can set 80 as default)
-* `YOUR_OVPN_ADMIN_PASSWORD_HASH`: Well, it's a bit complicated, but you need to choose a password and create an `apr1` hash for it. You can do it via command `openssl passwd -apr1 YOUR_PASSWORD` and you'll get string like that: `$apr1$fvM4f1vt$kQoXBas63UsUEJt4MaItS1`, then please double all `$` signs to avoid variable rendering, and you'll have something like `$$apr1$$fvM4f1vt$$kQoXBas63UsUEJt4MaItS1`
+* `YOUR_OVPN_ADMIN_PASSWORD_HASH`: Hash in apr1 for your admin password
 
-Requirements:
-You need [Docker](https://docs.docker.com/get-docker/) and [docker-compose](https://docs.docker.com/compose/install/) installed.
+The first settings are quite easy to fill, but getting `YOUR_OVPN_ADMIN_PASSWORD_HASH` could be a bit complicated/ You need to choose a password and create an `apr1` hash for it. You can do it via command
+
+    openssl passwd -apr1 YOUR_PASSWORD
+
+Then you'll get string like that: `$apr1$fvM4f1vt$kQoXBas63UsUEJt4MaItS1`.
+
+Please double all `$` signs to avoid variable rendering in docker-compose file, so, finally you'll have something like that: `$$apr1$$fvM4f1vt$$kQoXBas63UsUEJt4MaItS1`
 
 Commands to execute:
 
