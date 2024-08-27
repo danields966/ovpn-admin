@@ -4,6 +4,7 @@ services:
       context: .
       dockerfile: Dockerfile.openvpn
     image: openvpn:local
+    restart: always
     privileged: true
     command: /etc/openvpn/setup/configure.sh
     environment:
@@ -24,6 +25,7 @@ services:
       context: .
       dockerfile: Dockerfile.ovpn-admin
     image: ovpn-admin:local
+    restart: always
     command: /app/ovpn-admin
     privileged: true
     environment:
@@ -47,6 +49,7 @@ services:
 
   nginx-auth:
     image: beevelop/nginx-basic-auth
+    restart: always
     environment:
       HTPASSWD: "YOUR_OVPN_ADMIN_USER:YOUR_OVPN_ADMIN_PASSWORD_HASH"
       FORWARD_HOST: "openvpn"
