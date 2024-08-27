@@ -59,9 +59,11 @@ Commands to execute:
 Please note that you can skip running of setup_firewall.sh if you manually configure your network.
 
 ```bash
-OVPN_SERVER_PORT=YOUR_OPENVPN_SERVER_PORT ./setup_firewall.sh
 git clone https://github.com/danields966/ovpn-admin.git
 cd ovpn-admin
+chmod +x setup_firewall.sh
+chmod +x start_openvpn.sh
+OVPN_SERVER_PORT=YOUR_OPENVPN_SERVER_PORT ./setup_firewall.sh
 ./start_openvpn.sh
 ```
 
